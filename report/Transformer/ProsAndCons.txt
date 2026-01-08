@@ -1,0 +1,11 @@
+Pros
+- Superior semantic understanding through DistilBERT embeddings allows for accurate classification of synonymous commands even without exact keyword matches.
+- High F1 scores across diverse classes as shown in the metrics heatmap, demonstrating a balanced performance between precision and recall.
+- Contextual awareness enables the model to disambiguate complex instructions that simpler models miss, leading to higher overall accuracy.
+- Robustness to noise and minor phrasing variations due to the pre-trained nature of the underlying language model.
+
+Cons
+- Significantly higher computational cost for both training and inference compared to the Decision Tree and Simple NN, as evidenced by training times.
+- Complexity of deployment is greater, requiring heavier dependencies (PyTorch, Transformers) and more memory.
+- The confusion matrix suggests occasional misclassification between functionally similar high-level commands, likely due to subtle semantic overlaps.
+- Requires careful hyperparameter tuning (learning rate, epochs) to prevent catastrophic forgetting or overfitting on the small dataset.

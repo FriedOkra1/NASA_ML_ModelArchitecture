@@ -1,0 +1,3 @@
+F1 means the balance precision*recall/ precision+recall
+recall is true positives / true positives + false positives
+Precision is general accuracy in an 80/20 environment

@@ -1,0 +1,11 @@
+Pros
+- Excellent balance between performance and speed, leveraging pre-computed BERT embeddings for fast training times comparable to Decision Trees.
+- High AUROC (0.9610) indicates strong separability between classes, making it a reliable classifier for ranking predictions.
+- Feature augmentation via Gaussian noise injection proved effective, helping the model generalize better than a standard MLP on static embeddings.
+- The precision heatmap shows very high precision for distinct classes, benefiting from the rich semantic features of the underlying embeddings.
+
+Cons
+- Relies on a static embedding generation step, meaning it cannot adapt the embedding space to domain-specific nuances during training.
+- The recall metrics show some weakness in minority classes compared to the Transformer, likely due to the inability to fine-tune the attention mechanism.
+- Requires managing two separate artifacts (embedding model and MLP), slightly increasing the complexity of the inference pipeline.
+- The loss curves indicate potential for early overfitting, suggesting sensitivity to the number of hidden layers and dropout rate.

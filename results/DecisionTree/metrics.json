@@ -1,0 +1,11 @@
+{
+    "average_precision": 0.8648190820903072,
+    "class_precision": {
+        "Chatter": 0.8594040968342644,
+        "Coordination": 0.7676056338028169,
+        "Navigation": 0.8833333333333333,
+        "Observation": 0.7142857142857143,
+        "System_Config": 1.0,
+        "Verification": 0.9642857142857143
+    }
+}

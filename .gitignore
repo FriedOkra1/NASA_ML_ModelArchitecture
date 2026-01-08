@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+.ipynb_checkpoints/
+
+# System
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Large Data & Models
+*.pt
+*.pth
+*.pkl
+*.bin
+*.h5
+*.safetensors
+
+# Specific folders
+Transformer/models/checkpoints/
+SimpleNeuralNetwork/data/
+DecisionTree/models/
+SimpleNeuralNetwork/models/
+DecisionTree/results/
+SimpleNeuralNetwork/results/
+Transformer/results/
+# Keep the structure but ignore content if needed, but for results usually we might want to see them if they are images.
+# Actually, the user has many pngs in results, those are fine.
+# But I will ignore the models directories which likely contain the binaries I ignored above.
+
+# If the user wants to keep the results images (pngs), I shouldn't ignore the whole results folder.
+# I will just rely on the extension ignores for binaries.
+

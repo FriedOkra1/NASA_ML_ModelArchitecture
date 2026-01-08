@@ -1,0 +1,20 @@
+Current Configuration
+- Input Features: 768 (DistilBERT Mean Pooling)
+- Hidden Layers: [512, 256]
+- Output Dimension: 6 Classes
+- Learning Rate: 0.001
+- Dropout Rate: 0.3
+- Batch Size: 32
+- Epochs: 50
+- Noise Std (Augmentation): 0.05
+
+Impact Analysis
+- The dropout rate of 0.3 was essential in preventing the MLP from memorizing the high-dimensional embedding inputs, as seen in the gap between training and validation loss.
+- Gaussian noise injection (std=0.05) acted as an effective data augmentation strategy, making the decision boundaries more robust to minor variations in input semantics.
+- The network depth (768 -> 512 -> 256) provided sufficient capacity to learn complex non-linear mappings from the embedding space to the class labels.
+- A learning rate of 0.001 with Adam optimizer allowed for rapid convergence, reaching optimal performance within the first 20 epochs.
+
+Fine-Tuning Recommendations
+- Implement Early Stopping to halt training around epoch 20-30 where validation accuracy plateaus, saving computational resources.
+- Experiment with different pooling strategies (e.g., CLS token vs. Max Pooling) for the input embeddings to capture different semantic aspects.
+- Tune the hidden layer sizes (e.g., adding a layer of 128) to see if a deeper, narrower network captures more abstract features.

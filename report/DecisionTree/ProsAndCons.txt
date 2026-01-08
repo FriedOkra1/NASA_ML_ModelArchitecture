@@ -1,0 +1,11 @@
+Pros
+- Extremely fast inference and training speed due to the shallow architecture and reliance on simple boolean logic after vectorization.
+- High interpretability 
+- Robust precision on the "Navigation" class as shown in the precision heatmap where it achieves over 88% accuracy
+- Minimal computational resources required compared to other deep learning approaches, making it suitable for edge deployment.
+
+Cons
+- It relies on exact keyword matching and fails to capture context or synonyms effectively.
+- Struggle with rare classes as indicated by the recall bar chart showing significantly lower performance for minority classes compared to the majority ones.
+- High dimensionality can lead to sparse data issues and potential overfitting if tree depth is not constrained.
+- The class performance heatmap reveals significant confusion between similar commands that lack distinct keywords.

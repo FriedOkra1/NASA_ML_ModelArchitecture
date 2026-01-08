@@ -1,0 +1,18 @@
+Current Configuration
+- Model: distilbert-base-uncased
+- Epochs: 5
+- Batch Size: 8
+- Learning Rate: 2e-05
+- Weight Decay: 0.01
+- Scheduler: Linear with warmup
+
+Impact Analysis
+- The low learning rate of 2e-05 was crucial for fine-tuning the pre-trained weights without destroying the learned semantic features, resulting in stable convergence.
+- A small batch size of 8 allowed for frequent weight updates and manageable memory usage, though it may have introduced some noise in the gradient estimation.
+- Weight decay of 0.01 provided necessary regularization, preventing the model from overfitting to the specific phrasing of the training set.
+- Using 5 epochs was sufficient to reach a plateau in validation accuracy, as further training would likely lead to overfitting given the dataset size.
+
+Fine-Tuning Recommendations
+- Experiment with gradient accumulation to simulate larger batch sizes (e.g., 32 or 64) for potentially more stable convergence.
+- Introduce a learning rate scheduler with a longer warmup period to gently adapt the pre-trained weights to the specific domain vocabulary.
+- Test freezing the lower layers of DistilBERT and only training the top layers to reduce training time and potential overfitting.
