@@ -1,0 +1,16 @@
+DistilBERT Training Log
+Model: distilbert-base-uncased
+Epochs: 5
+Batch Size: 8
+Learning Rate: 2e-05
+
+Results:
+eval_loss: 0.04232630133628845
+eval_accuracy: 0.9913366336633663
+eval_f1: 0.9786123365900371
+eval_precision: 0.9821534178783625
+eval_recall: 0.9755261807867411
+eval_runtime: 79.376
+eval_samples_per_second: 50.897
+eval_steps_per_second: 6.362
+epoch: 5.0

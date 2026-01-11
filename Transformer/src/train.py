@@ -1,4 +1,4 @@
-utf-8import os
+import os
 import torch
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -8,19 +8,19 @@ from transformers import DataCollatorWithPadding
 from datasets import Dataset
 from data_loader import load_data
 MODEL_NAME = 'distilbert-base-uncased'
-OUTPUT_DIR = '../models'
-RESULTS_DIR = '../results'
-LOG_FILE = '../../report/Transformer/hyperparameters.txt'
+OUTPUT_DIR = '../NewResults/models'
+RESULTS_DIR = '../NewResults/results'
+LOG_FILE = '../NewResults/report/hyperparameters.txt'
 def compute_metrics(eval_pred):
     logits, labels = eval_pred
     predictions = np.argmax(logits, axis=-1)
     precision, recall, f1, _ = precision_recall_fscore_support(labels, predictions, average='macro', zero_division=0)
     acc = accuracy_score(labels, predictions)
     return {
-        : acc,
-        : f1,
-        : precision,
-        : recall
+        'accuracy': acc,
+        'f1': f1,
+        'precision': precision,
+        'recall': recall
     }
 def main():
     print("Loading data...")
@@ -47,6 +47,22 @@ def main():
         id2label=id2label,
         label2id=label2id
     )
+
+    # Freeze embeddings
+    for param in model.distilbert.embeddings.parameters():
+        param.requires_grad = False
+    
+    # Freeze first 4 layers of the transformer
+    for layer in model.distilbert.transformer.layer[:4]:
+        for param in layer.parameters():
+            param.requires_grad = False
+
+    # Verify trainable parameters
+    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    all_params = sum(p.numel() for p in model.parameters())
+    print(f"Trainable parameters: {trainable_params}")
+    print(f"All parameters: {all_params}")
+    print(f"Percentage trainable: {100 * trainable_params / all_params:.2f}%")
     training_args = TrainingArguments(
         output_dir=f"{OUTPUT_DIR}/checkpoints",
         learning_rate=2e-5,

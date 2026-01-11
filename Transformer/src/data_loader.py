@@ -1,4 +1,4 @@
-utf-8import pandas as pd
+import pandas as pd
 import glob
 import os
 def load_data(data_dir=None):
